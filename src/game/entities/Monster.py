@@ -84,7 +84,12 @@ class Monster(object):
 
     # Methods
     def __str__(self):
-        return f"life: {self.__life}, mana: {self.__mana}, max_life: {self.__max_life}, max_mana: {self.__max_mana}, attack: {self.__attack}, defense: {self.__defense}"
+        return f"life: {self.__life}, \
+        mana: {self.__mana}, \
+        max_life: {self.__max_life}, \
+        max_mana: {self.__max_mana}, \
+        attack: {self.__attack}, \
+        defense: {self.__defense}"
 
     def __repr__(self):
         return self.__str__()
