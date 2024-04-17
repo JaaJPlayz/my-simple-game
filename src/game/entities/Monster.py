@@ -22,6 +22,14 @@ class Monster(object):
         __repr__(self)
         __eq__(self, other)
         __ne__(self, other)
+
+    Custom functions:
+        take_damage(self, damage)
+        heal(self, heal)
+        recover_mana(self, mana)
+        attack_player(self, player)
+        defend(self, damage)
+        is_dead(self)
     """
 
     def __init__(self, life, mana, max_life, max_mana, attack, defense):
@@ -99,3 +107,45 @@ class Monster(object):
 
     def __ne__(self, other):
         return self.__str__() != other.__str__()
+
+    # Custom functions
+    def take_damage(self, damage):
+        self.__life -= damage
+
+        if self.__life < 0:
+            self.__life = 0
+
+        return self
+
+    def heal(self, heal):
+        self.__life += heal
+
+        if self.__life > self.__max_life:
+            self.__life = self.__max_life
+
+        return self
+
+    def recover_mana(self, mana):
+        self.__mana += mana
+
+        if self.__mana > self.__max_mana:
+            self.__mana = self.__max_mana
+
+        return self
+
+    def attack_player(self, player):
+        player.life -= self.__attack
+
+        if player.life < 0:
+            player.life = 0
+
+        return player
+
+    def defend(self, damage):
+        self.__life -= damage
+        if self.__life < 0:
+            self.__life = 0
+        return self
+
+    def is_dead(self):
+        return self.__life == 0
